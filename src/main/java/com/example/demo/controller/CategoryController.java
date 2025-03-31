@@ -34,7 +34,7 @@ public class CategoryController {
 	public String home1(@RequestBody Category c) {
 		boolean b = c1.saveCat(c);
 		if (b) {
-			return "Record Save Success";
+			return "Record Save Success ...!";
 		} else {
 			return "Record not Success";
 		}
