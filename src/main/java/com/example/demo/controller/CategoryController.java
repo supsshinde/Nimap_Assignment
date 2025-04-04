@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import java.util.List;
-import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Category;
@@ -22,13 +21,6 @@ public class CategoryController {
 
 	@Autowired
 	CategoryService c1;
-//
-//	@GetMapping
-//	public Page<Category> getAllCategory(@RequestParam(defaultValue = "0") int page,
-//			@RequestParam(defaultValue = "5") int size) {
-//		return c1.getAllCategory(page, size);
-//
-//	}
 
 	@PostMapping()
 	public String home1(@RequestBody Category c) {
@@ -77,5 +69,11 @@ public class CategoryController {
 			return "record not found";
 		}
 	}
+	
+	 @GetMapping("/searchCategoryByName/{n}/{page}/{size}")
+	    public Page<Category> getCategoryByName(@PathVariable("n") String name, @PathVariable("page") int page, @PathVariable("size") int size) 
+	 {
+	        return c1.getCategoryByName(name, page, size);
+	    }
 
 }

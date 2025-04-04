@@ -1,12 +1,9 @@
 package com.example.demo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
 
@@ -25,13 +20,6 @@ import com.example.demo.service.ProductService;
 public class ProductController {
 	@Autowired
 	ProductService p1;
-//
-//	@GetMapping
-//	public Page<Product> getAllCategories(@RequestParam(defaultValue = "0") int page,
-//			@RequestParam(defaultValue = "5") int size) {
-//		return p1.getAllProducts(page, size);
-//
-//	}
 
 	@PostMapping()
 	public String productp(@RequestBody Product product) {
@@ -58,7 +46,8 @@ public class ProductController {
 
 		if (pid != null) {
 			return pid;
-		} else {
+		} 
+		else {
 			return null;
 		}
 	}
@@ -86,5 +75,10 @@ public class ProductController {
 			return "record not found";
 		}
 	}
-
+	
+	 @GetMapping("/searchProductByName/{n}/{page}/{size}")
+	    public Page<Product> getCategoryByName(@PathVariable("n") String pname, @PathVariable("page") int page, @PathVariable("size") int size) 
+	 {
+	        return p1.getProductByName(pname, page, size);
+	    }
 }

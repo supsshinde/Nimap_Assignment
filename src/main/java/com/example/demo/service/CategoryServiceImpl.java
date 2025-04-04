@@ -66,4 +66,14 @@ public class CategoryServiceImpl implements CategoryService {
 		Pageable pagable=PageRequest.of(page, size);
 		return cr.findAll(pagable);
 	}
+	
+	public Page<Category> getCategoryByName(String name, int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		int totalPages = pageable.getPageSize();
+		int pageNum = pageable.getPageNumber();
+		System.out.println(pageNum);
+		System.out.println(totalPages);
+		return cr.findByName(name, pageable);
+	}
+
 }

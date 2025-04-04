@@ -18,4 +18,7 @@ public interface CategoryService {
 
 	boolean delcat(int id);
 
+	public Page<Category> getCategoryByName(String name, int page, int size);
+
+
 }

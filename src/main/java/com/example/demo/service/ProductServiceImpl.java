@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
 
@@ -69,5 +68,15 @@ public class ProductServiceImpl implements ProductService {
 		Pageable pagable=PageRequest.of(page, size);
         return pr.findAll(pagable);
 	}
+
+	public Page<Product> getProductByName(String pname, int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		int totalPages = pageable.getPageSize();
+		int pageNum = pageable.getPageNumber();
+		System.out.println(pageNum);
+		System.out.println(totalPages);
+		return pr.findByPname(pname, pageable);
+	}
+	
 
 }

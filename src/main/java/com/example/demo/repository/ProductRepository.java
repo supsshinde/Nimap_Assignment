@@ -11,4 +11,7 @@ import com.example.demo.model.Product;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
 	Page<Product> findAll(Pageable pageable);
+
+	Page<Product> findByPname(String pname, Pageable pageable);
+
 }

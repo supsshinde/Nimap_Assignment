@@ -11,4 +11,6 @@ public interface ProductService {
 	Product viewpbyid(int id);
 	Product updatep(Product c);
 	boolean delp(int id);
+	public Page<Product> getProductByName(String pname, int page, int size);
+
 }

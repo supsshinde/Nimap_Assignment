@@ -11,5 +11,7 @@ import com.example.demo.model.Category;
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	
 	Page<Category> findAll(Pageable pageable);
+
+	Page<Category> findByName(String name, Pageable pageable);
 }
 
